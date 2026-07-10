@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kenidee Martin | Cosmic Portfolio</title>
+    <style>
+      :root {
+        --bg: #040816;
+        --panel: rgba(10, 18, 42, 0.82);
+        --text: #f2f6ff;
+        --muted: #9eb0d3;
+        --accent: #8b5cf6;
+        --accent-2: #22d3ee;
+        --accent-3: #f59e0b;
+        --border: rgba(255, 255, 255, 0.12);
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top left, rgba(34, 211, 238, 0.18), transparent 24%),
+          radial-gradient(circle at 80% 20%, rgba(139, 92, 246, 0.2), transparent 30%),
+          linear-gradient(135deg, #02040d 0%, #060b1d 45%, #090f2f 100%);
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      body::before,
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      body::before {
+        background-image:
+          radial-gradient(circle, rgba(255,255,255,0.95) 1px, transparent 1px),
+          radial-gradient(circle, rgba(255,255,255,0.7) 1px, transparent 1px);
+        background-size: 240px 240px, 320px 320px;
+        background-position: 0 0, 80px 120px;
+        opacity: 0.22;
+        animation: drift 90s linear infinite;
+      }
+
+      body::after {
+        background: radial-gradient(circle, rgba(255,255,255,0.08), transparent 55%);
+        filter: blur(50px);
+        opacity: 0.6;
+      }
+
+      @keyframes drift {
+        from { transform: translateY(0); }
+        to { transform: translateY(-300px); }
+      }
+
+      .wrapper {
+        position: relative;
+        z-index: 1;
+        width: min(1120px, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 1rem 0 3rem;
+      }
+
+      .hero {
+        padding: 4rem 0 3rem;
+        display: grid;
+        gap: 1.25rem;
+      }
+
+      .eyebrow {
+        display: inline-block;
+        padding: 0.45rem 0.8rem;
+        border: 1px solid rgba(34, 211, 238, 0.3);
+        border-radius: 999px;
+        background: rgba(34, 211, 238, 0.08);
+        color: #9deeff;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-size: 0.8rem;
+        width: fit-content;
+      }
+
+      h1 {
+        font-size: clamp(2.3rem, 5vw, 4.2rem);
+        margin: 0;
+        line-height: 1.06;
+      }
+
+      .hero p {
+        margin: 0;
+        max-width: 720px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.8;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        padding-top: 0.5rem;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--text);
+        padding: 0.7rem 1rem;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        background: rgba(255,255,255,0.03);
+        transition: transform 180ms ease, border-color 180ms ease;
+      }
+
+      nav a:hover {
+        transform: translateY(-2px);
+        border-color: rgba(34, 211, 238, 0.45);
+      }
+
+      section {
+        margin-top: 2rem;
+        padding: 1.3rem 0;
+      }
+
+      .card-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+      }
+
+      .card {
+        background: var(--panel);
+        backdrop-filter: blur(12px);
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        padding: 1.25rem;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.28);
+      }
+
+      .card h2,
+      .card h3 {
+        margin-top: 0;
+        margin-bottom: 0.6rem;
+      }
+
+      .card p,
+      .card li {
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .stats {
+        display: grid;
+        gap: 0.8rem;
+        margin-top: 1rem;
+      }
+
+      .stat {
+        padding: 0.85rem 0.95rem;
+        border-radius: 16px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .project-list {
+        display: grid;
+        gap: 0.8rem;
+      }
+
+      .project-item {
+        padding: 0.95rem 1rem;
+        border-radius: 16px;
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.06);
+      }
+
+      .project-item strong { color: #fff; }
+
+      .contact-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-top: 0.8rem;
+      }
+
+      .contact-links a {
+        color: white;
+        text-decoration: none;
+        padding: 0.7rem 0.95rem;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--accent) 0%, var(--accent-2) 100%);
+      }
+
+      .highlight {
+        color: #b8f5ff;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2rem 0 0.5rem;
+        color: #6f7fa6;
+        font-size: 0.95rem;
+      }
+
+      @media (max-width: 760px) {
+        .card-grid { grid-template-columns: 1fr; }
+        .hero { padding-top: 2.5rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="hero">
+        <span class="eyebrow">Cosmic Portfolio</span>
+        <h1>Kenidee Martin</h1>
+        <p>
+          I’m a creative builder with a love for bold ideas, thoughtful design, and the kind of ambition that feels a little like reaching for the stars.
+          This space is where I share who I am, what I create, and the projects I’m carrying forward with heart.
+        </p>
+        <nav>
+          <a href="#about">About Me</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact & Hail Mary</a>
+        </nav>
+      </header>
+
+      <section id="about">
+        <div class="card-grid">
+          <article class="card">
+            <h2>About Me</h2>
+            <p>
+              I’m drawn to the spaces where imagination meets purpose. Whether I’m crafting websites, exploring new ideas, or building something meaningful from scratch, I try to bring clarity, creativity, and a little cosmic energy into everything I make.
+            </p>
+            <div class="stats">
+              <div class="stat"><strong>Focus:</strong> <span class="highlight">Design, storytelling, and digital creativity</span></div>
+              <div class="stat"><strong>Vibe:</strong> <span class="highlight">Curious, grounded, and future-facing</span></div>
+              <div class="stat"><strong>Mission:</strong> <span class="highlight">Build things that feel memorable</span></div>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>My Current Orbit</h3>
+            <p>
+              Right now, I’m focused on growing as a creator, finding meaningful projects, and making work that connects with people in a real way. I believe the best ideas often begin with a spark and a lot of patience.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="projects">
+        <div class="card-grid">
+          <article class="card">
+            <h2>Projects</h2>
+            <div class="project-list">
+              <div class="project-item">
+                <strong>Galaxy Portfolio</strong>
+                <div>A personal web experience designed to feel immersive, modern, and reflective of a bold identity.</div>
+              </div>
+              <div class="project-item">
+                <strong>Creative Experiments</strong>
+                <div>Small builds, concepts, and visual ideas that explore story, motion, and visual identity.</div>
+              </div>
+              <div class="project-item">
+                <strong>Future Concepts</strong>
+                <div>Ideas in progress that blend technology, imagination, and purpose into something worth sharing.</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Project Hail Mary</h3>
+            <p>
+              This is the big swing: a bold idea built with hope, resilience, and a willingness to try something ambitious even when the odds feel steep. It’s about taking a leap and believing the mission matters.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact">
+        <div class="card-grid">
+          <article class="card">
+            <h2>Contact</h2>
+            <p>
+              If you want to connect, collaborate, or just say hello, this is the place to start.
+            </p>
+            <div class="contact-links">
+              <a href="mailto:kenidee@example.com">Email Me</a>
+              <a href="#top">Back to Top</a>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>Mission Notes</h3>
+            <p>
+              Open to new opportunities, thoughtful collaborations, and projects that feel meaningful. If you have an idea that needs a little courage and creativity, I’d love to hear it.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <footer>
+        Crafted for Kenidee Martin • Designed with a galaxy-inspired feel
+      </footer>
+    </div>
+  </body>
+</html>
